@@ -1,0 +1,52 @@
+html(xmlns='http://www.w3.org/1999/xhtml')
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+		title 中宇资讯推送管理后台
+		link(href='/public/css/bootstrap.min.css', rel='stylesheet')
+		link(href='/public/css/dashboard.css', rel='stylesheet')
+		script(src='/public/javascripts/jquery.min.js')
+		script(src='/public/javascripts/jQuery.md5.js')
+		script(src='/public/javascripts/Dialog.js')
+		script(src='/public/javascripts/jquery.cookie.js')
+		script(src='/public/javascripts/jquery.pagination.js')
+		script(src='/public/javascripts/bootstrap-modal.js')
+		script(src='/public/javascripts/signature.js')
+		script(src='/public/javascripts/channel.js')
+	body
+		.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+			.container-fluid
+				.navbar-header
+					button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+						span.sr-only
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') 中宇资讯信息管理后台
+				.navbar-collapse.collapse
+					ul.nav.navbar-nav.navbar-rightc
+					form.navbar-form.navbar-right
+						//input.form-control(type='text', placeholder='Search...')
+		.container-fluid
+			.row
+				.col-sm-3.col-md-2.sidebar
+					ul.nav.nav-sidebar
+						li.active
+							a(href='#') 订阅
+						li
+							a(href='/smslist') 信息接收列表
+						li
+							a(href='/usermanager') 管理员用户管理	
+				.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+					h2.sub-header 订阅列表
+					.table-responsive
+						table.table.table-striped
+							thead
+								tr
+									th 手机号码
+									th 订阅产品
+									th 时间
+									th 是否跟踪
+									th 跟踪人
+									th 操作
+							tbody.list
+						#pagination

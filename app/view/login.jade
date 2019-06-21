@@ -1,0 +1,23 @@
+html(xmlns='http://www.w3.org/1999/xhtml')
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+		link(rel='stylesheet', type='text/css', href='/public/css/bootstrap.min.css')
+		script(src='/public/javascripts/jquery.min.js')
+		script(src='/public/javascripts/jQuery.md5.js')
+		script(src='/public/javascripts/jquery.cookie.js')
+		script(src='/public/javascripts/signature.js')
+		script(src='/public/javascripts/login.js')
+		title 中宇资讯推送管理后台
+	body
+		.container(style="margin-top:100px")
+			div
+				form(style="width:220px;margin:0px auto;")
+					h3.text-center 后台登陆
+					.form-group
+						label 用户名:
+						input.form-control#username(type='text', value='' )
+					.form-group
+						label 密码:
+						input.form-control#password(type='password', value='' )
+					div.text-center
+						button.btn.btn-primary.btn_log &nbsp;&nbsp;登录&nbsp;&nbsp;

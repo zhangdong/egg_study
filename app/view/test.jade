@@ -1,0 +1,39 @@
+html(xmlns='http://www.w3.org/1999/xhtml')
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+		link(rel='stylesheet', type='text/css', href='/public/css/bootstrap.min.css')
+		script(src='/public/javascripts/jquery.min.js')
+		script(src='/public/javascripts/test.js')
+		title Push test
+	body
+		.container
+			.row
+				.col-md-12
+					span.warning 用于测试 请慎用.
+				.col-md-12
+					form.form(role="form",parsley-validate)
+						.form-group
+							label handphones(手机号)
+							input.form-control.handphones(required,type='text',placeholder="手机号用','(英文半角)分隔 eg: 18610353305,18097662332")
+						.form-group
+							label producename(产品名)
+							input.form-control.producename(required,type='text', placeholder="eg: 烧碱")
+						.form-group
+							label produceclass(可空)
+							input.form-control.produceclass(type='text', placeholder="eg: 山东实业集团")
+						.form-group
+							label smsbody(内容)
+							input.form-control.smsbody(required,type='text',placeholder = "eg: 烧碱,山东实业集团出品,4444元/吨")
+						.form-group
+							label senddate(发送时间)
+							input.form-control.senddate(required,type='text',placeholder="eg: 下午1:23")
+						.form-group
+							label senduser(发送人)
+							input.form-control.senduser(required,type='text',placeholder="eg: zusd")
+						.form-group
+							label type()
+							input.form-control.type(required,type='text',placeholder="")
+						.form-group
+							label adlink()
+							input.form-control.adlink(required,type='text',placeholder="")
+						button.btn-primary.btn.send 发送

@@ -1,0 +1,120 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+	padding-top: 50px;
+}
+
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+	border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+	display: none;
+}
+@media (min-width: 768px) {
+	.sidebar {
+		position: fixed;
+		top: 51px;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 20px;
+		overflow-x: hidden;
+		overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+		background-color: #f5f5f5;
+		border-right: 1px solid #eee;
+	}
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+	margin-right: -21px; /* 20px padding + 1px border */
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+.nav-sidebar > li > a {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+	color: #fff;
+	background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+.main {
+	padding: 20px;
+}
+@media (min-width: 768px) {
+	.main {
+		padding-right: 40px;
+		padding-left: 40px;
+	}
+}
+.main .page-header {
+	margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+	margin-bottom: 30px;
+	text-align: center;
+}
+.placeholders h4 {
+	margin-bottom: 0;
+}
+.placeholder {
+	margin-bottom: 20px;
+}
+.placeholder img {
+	display: inline-block;
+	border-radius: 50%;
+}
+
+.btn_search{
+	margin-left: 10px;
+}
+.clear {
+	width: 10px;
+	height: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 20px;
+	text-decoration: none;
+	margin-left: -19px;
+}
+/*dialog*/
+.m-dlg-wp,.m-ldg-wp{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:fixed;top:0;left:0;bottom:0;right:0;font-size:16px;color:#333;background-color:rgba(33,33,33,0.4);visibility:hidden;opacity:0;z-index:99999;-webkit-transition:opacity 0.22s linear;-moz-transition:opacity 0.22s linear;-o-transition:opacity 0.22s linear;transition:opacity 0.22s linear}.m-dlg-wp.show,.m-ldg-wp.show{opacity:1;visibility:visible}.m-dlg-wp .m-dlg{width:80%;max-width:300px;margin:100px auto 0;background-color:#f7f7f7;-webkit-border-radius:6px;-webkit-background-clip:padding-box;-moz-border-radius:6px;-moz-background-clip:padding;border-radius:6px;background-clip:padding-box;text-align:center;border-collapse:collapse;overflow:hidden}.m-dlg-wp .m-dlg .m-title{padding:8px;padding-bottom:0;font-size:1.2em;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.m-dlg-wp .m-dlg .m-content{padding:4px 8px;padding-bottom:8px;border-bottom:1px solid #ccc}.m-dlg-wp .m-dlg .m-btns{overflow:hidden}.m-dlg-wp .m-dlg .m-btns td{padding:8px;width:50%;font-weight:bold;color:#63a3da}.m-dlg-wp .m-dlg .m-btns td.active{background-color:#ddd}.m-dlg-wp .m-dlg .m-btns .confirm.border{border-left:1px solid #ccc}.m-ldg-wp .m-content{position:absolute;top:50%;height:0;width:100%;text-align:center;margin:0 auto}.m-ldg-wp .m-content .m-inner{padding:8px;-webkit-border-radius:8px;-webkit-background-clip:padding-box;-moz-border-radius:8px;-moz-background-clip:padding;border-radius:8px;background-clip:padding-box;background-color:#f7f7f7;position:relative;top:-40px;display:inline-block;min-width:40px}.m-ldg-wp .m-content .m-inner .m-text{padding-top:32px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;line-height:1.4;color:#888;background:url(images/loading-white.gif) no-repeat top center}.m-popup-wp{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:fixed;left:0;right:0;bottom:0;height:0;opacity:0;z-index:9998;font-size:16px;color:#333;text-align:center;-webkit-transition:bottom .2s linear,opacity .2s linear;transition:bottom .2s linear,opacity .2s linear}.m-popup-wp.show{bottom:100px;opacity:1;height:auto}.m-popup-wp .m-content{position:relative;display:inline-block;max-width:90%;min-width:100px;padding:8px;-webkit-border-radius:6px;-webkit-background-clip:padding-box;-moz-border-radius:6px;-moz-background-clip:padding;border-radius:6px;background-clip:padding-box;-webkit-box-shadow:0 0 4px #eeeeee;-moz-box-shadow:0 0 4px #eeeeee;box-shadow:0 0 4px #eeeeee;border:1px solid #ccc;word-break:break-all;background-color:#f7f7f7}
