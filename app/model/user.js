@@ -61,11 +61,6 @@ module.exports = app => {
       ],
     },
   });
-  userSchema.methods.unbind = async function() {
-    this.device.logDate.push({ timestamp: new Date(), type: 'unbind' });
-    this.device.uuids = [];
-    await this.save();
-  };
 
   userSchema.methods.updateDevice = async function(device, addNew, jpushId) {
     let addNewUUID = false;
@@ -91,7 +86,6 @@ module.exports = app => {
     await this.save();
     return addNewUUID;
   };
-
 
   return mongoose.model('User', userSchema, 'user');
 

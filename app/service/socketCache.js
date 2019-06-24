@@ -19,7 +19,6 @@ class SocketCacheService extends Service {
     if (tel) { delete sockets[tel.toString()]; }
   }
   all() {
-    console.log(sockets);
     return sockets;
   }
 }
