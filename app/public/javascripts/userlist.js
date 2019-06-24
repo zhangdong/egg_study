@@ -59,6 +59,12 @@ $(document).ready(function(){
 					dataType 	: "json",
 					contentType : "application/json",
 					url  		: "http://"+location.host+"/user/"+id+"/delete-message"+getSignature(),
+					beforeSend(xhr,settings){
+						var csrftoken = $.cookie('csrfToken');
+						if(csrftoken){
+							xhr.setRequestHeader('x-csrf-token', csrftoken);
+						}
+					},
 					complete 	: function(jqXHR,textStatus){
 						$.loading.hide();
 						switch(jqXHR.status){
@@ -206,6 +212,12 @@ $(document).ready(function(){
 				dataType 	: "json",
 				contentType : "application/json",
 				url  		: "http://"+location.host+"/user/"+id+getSignature(),
+				beforeSend(xhr,settings){
+					var csrftoken = $.cookie('csrfToken');
+					if(csrftoken){
+						xhr.setRequestHeader('x-csrf-token', csrftoken);
+					}
+				},
 				complete 	: function(jqXHR,textStatus){
 					$.loading.hide();
 					switch(jqXHR.status){
@@ -252,6 +264,12 @@ $(document).ready(function(){
 			dataType 	: "json",
 			contentType : "application/json",
 			url  		: "http://"+location.host+"/"+id+"/unbind"+getSignature(),
+			beforeSend(xhr,settings){
+				var csrftoken = $.cookie('csrfToken');
+				if(csrftoken){
+					xhr.setRequestHeader('x-csrf-token', csrftoken);
+				}
+			},
 			complete 	: function(jqXHR,textStatus){
 				$.loading.hide();
 				switch(jqXHR.status){

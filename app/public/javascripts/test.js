@@ -51,6 +51,12 @@ $(document).ready(function(){
 			contentType : "application/json",
 			url  		: "http://"+location.host+"/post-message",
 			data 		: JSON.stringify(payload),
+			beforeSend(xhr,settings){
+				var csrftoken = $.cookie('csrfToken');
+				if(csrftoken){
+					xhr.setRequestHeader('x-csrf-token', csrftoken);
+				}
+			},
 			complete 	: function(jqXHR,textStatus){
 				$(".send").text("发送");
 				$(".send").removeAttr("disabled");

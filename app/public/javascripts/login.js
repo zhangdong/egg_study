@@ -1,29 +1,35 @@
 'use strict';
 
-$(document).ready(function(){
-	$(".btn_log").off("click");
-	$(".btn_log").on("click",function(e){
-		e.preventDefault();
-		var userName = $("input[type=text]").val();
-		var password = $("input[type=password]").val();
+$(document).ready(function() {
+  $('.btn_log').off('click');
+  $('.btn_log').on('click', function(e) {
+    e.preventDefault();
+    let userName = $('input[type=text]').val();
+    let password = $('input[type=password]').val();
 
-		if(userName==''||password=='') {
-			alert("账户或者密码不能为空");
-			return;
-		}
-		$(".btn_log").text("登录中...");
-		$(".btn_log").attr("disabled","disabled");
+    if (userName == '' || password == '') {
+      alert('账户或者密码不能为空');
+      return;
+    }
+    $('.btn_log').text('登录中...');
+    $('.btn_log').attr('disabled', 'disabled');
 
-		var signature = $.param(getSignature());
-//		console.log(signature);
-		var payload = {username:userName,password:password};
-		$.ajax({
-			type 		: "POST",
-			dataType 	: "json",
-			contentType : "application/json",
-			url  		: "http://"+location.host+"/login"+getSignature(),
-			data        : JSON.stringify(payload),
-			complete 	: function(jqXHR,textStatus){
+    let signature = $.param(getSignature());
+    //		console.log(signature);
+    let payload = { username: userName, password };
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json',
+      url: 'http://' + location.host + '/login' + getSignature(),
+      data: JSON.stringify(payload),
+      beforeSend(xhr,settings){
+				var csrftoken = $.cookie('csrfToken');
+				if(csrftoken){
+					xhr.setRequestHeader('x-csrf-token', csrftoken);
+				}
+			},
+      complete(jqXHR,textStatus){
 				$(".btn_log").text("登录");
 				$(".btn_log").removeAttr("disabled");
 				switch(jqXHR.status){
@@ -47,7 +53,7 @@ $(document).ready(function(){
 						alert("错误: "+jqXHR.responseText);
 						break;
 				}
-			}
-		});
-	});
+			},
+    });
+  });
 });

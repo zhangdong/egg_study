@@ -74,6 +74,12 @@ $(document).ready(function(){
 			dataType 	: "json",
 			contentType : "application/json",
 			url  		: "http://"+location.host+"/admin-user/"+getSignature(),
+			beforeSend(xhr,settings){
+				var csrftoken = $.cookie('csrfToken');
+				if(csrftoken){
+					xhr.setRequestHeader('x-csrf-token', csrftoken);
+				}
+			},
 			data        : JSON.stringify(body),
 			complete 	: function(jqXHR,textStatus){
 				$.loading.hide();
@@ -113,6 +119,12 @@ $(document).ready(function(){
 					dataType 	: "json",
 					contentType : "application/json",
 					url  		: "http://"+location.host+"/admin-user/"+user._id+getSignature(),
+					beforeSend(xhr,settings){
+						var csrftoken = $.cookie('csrfToken');
+						if(csrftoken){
+							xhr.setRequestHeader('x-csrf-token', csrftoken);
+						}
+					},
 					complete 	: function(jqXHR,textStatus){
 						switch(jqXHR.status){
 							case 200:
@@ -161,6 +173,12 @@ $(document).ready(function(){
 					contentType : "application/json",
 					url  		: "http://"+location.host+"/admin-user/"+user._id+getSignature(),
 					data        : JSON.stringify(body),
+					beforeSend(xhr,settings){
+						var csrftoken = $.cookie('csrfToken');
+						if(csrftoken){
+							xhr.setRequestHeader('x-csrf-token', csrftoken);
+						}
+					},
 					complete 	: function(jqXHR,textStatus){
 						$.loading.hide();
 						switch(jqXHR.status){

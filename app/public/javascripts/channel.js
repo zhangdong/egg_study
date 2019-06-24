@@ -37,6 +37,12 @@ $(document).ready(function(){
 			contentType : "application/json",
 			url  		: "http://"+location.host+"/users/"+channel._id+"/track"+getSignature(),
 			data        : JSON.stringify({userid:uid}),
+			beforeSend(xhr,settings){
+				var csrftoken = $.cookie('csrfToken');
+				if(csrftoken){
+					xhr.setRequestHeader('x-csrf-token', csrftoken);
+				}
+			},
 			complete 	: function(jqXHR,textStatus){
 				switch(jqXHR.status){
 					case 200:
@@ -66,6 +72,12 @@ $(document).ready(function(){
 			dataType 	: "json",
 			contentType : "application/json",
 			url  		: "http://"+location.host+"/users/channel"+getSignature()+"&page="+page,
+			beforeSend(xhr,settings){
+				var csrftoken = $.cookie('csrfToken');
+				if(csrftoken){
+					xhr.setRequestHeader('x-csrf-token', csrftoken);
+				}
+			},
 			complete 	: function(jqXHR,textStatus){
 				$.loading.hide();
 				switch(jqXHR.status){

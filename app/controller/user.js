@@ -13,6 +13,7 @@ class UserController extends Controller {
         this.ctx.status = user.status;
         this.ctx.body = { error: user.error };
       } else {
+        this.ctx.rotateCsrfSecret();
         this.ctx.status = 200;
         this.ctx.session.userinfo = user;
         this.ctx.body = user;
