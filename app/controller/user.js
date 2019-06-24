@@ -30,7 +30,7 @@ class UserController extends Controller {
 
   async unbind() {
     const model = this.ctx.model.User;
-    const user = await model.findById(this.ctx.request.params.id);
+    const user = await model.findById(this.ctx.params.id);
     if (user) {
       await user.unbind();
       this.ctx.status = 200;
@@ -58,8 +58,8 @@ class UserController extends Controller {
   async getUsers() {
     const model = this.ctx.model.User;
     const totalNum = await model.find({}).countDocuments();
-    const pageSize = this.ctx.request.query.size ? this.ctx.request.query.size : 10;
-    const page = this.ctx.request.query.page ? this.ctx.request.query.page : 0;
+    const pageSize = this.ctx.query.size ? this.ctx.query.size : 10;
+    const page = this.ctx.query.page ? this.ctx.query.page : 0;
     const users = await model.find({}).select('tel _id device').sort({ _id: -1 })
       .skip(parseInt(page * pageSize))
       .limit(pageSize);
@@ -72,7 +72,7 @@ class UserController extends Controller {
 
   async getUser() {
     const model = this.ctx.model.User;
-    const user = await model.findOne({ tel: this.ctx.request.params.tel });
+    const user = await model.findOne({ tel: this.ctx.params.tel });
     if (!user) {
       this.ctx.status = 404;
       this.ctx.body = { error: '用户不存在' };
@@ -123,8 +123,8 @@ class UserController extends Controller {
   async getChannels() {
     const model = this.ctx.model.User;
     const count = await model.find().exists('product', true).countDocuments();
-    const pageSize = this.ctx.request.query.size ? this.ctx.request.query.size : 10;
-    const page = this.ctx.request.query.page ? this.ctx.request.query.page : 0;
+    const pageSize = this.ctx.query.size ? this.ctx.query.size : 10;
+    const page = this.ctx.query.page ? this.ctx.query.page : 0;
     const channesl = await model.find().exists('product', true).skip(parseInt(page * pageSize))
       .limit(pageSize)
       .sort({ channelTimestamp: '-1' })
@@ -153,7 +153,7 @@ class UserController extends Controller {
 
   async getUserHistory() {
     const model = this.ctx.model.User;
-    const user = await model.findById(this.ctx.request.params.id);// .populate("pendingNews");
+    const user = await model.findById(this.ctx.params.id);// .populate("pendingNews");
     if (!user) {
       this.ctx.status = 404;
       this.ctx.body = { error: '用户不存在' };
@@ -170,13 +170,13 @@ class UserController extends Controller {
 
   async deleteUser() {
     const model = this.ctx.model.User;
-    await model.findByIdAndRemove(this.ctx.request.params.id);
+    await model.findByIdAndRemove(this.ctx.params.id);
     this.ctx.status = 200;
   }
 
   async deleteUserMessage() {
     const model = this.ctx.model.User;
-    const user = await model.findById(this.ctx.request.params.id);
+    const user = await model.findById(this.ctx.params.id);
     if (!user) {
       this.ctx.status = 404;
       this.ctx.body = { error: '用户不存在' };
@@ -188,10 +188,6 @@ class UserController extends Controller {
       await result[i].remove();
     }
     this.ctx.status = 200;
-    this.ctx.body = {
-      tel: user.tel,
-      newsHistory: result,
-    };
   }
 
   async getAdminUsers() {
@@ -213,20 +209,20 @@ class UserController extends Controller {
 
   async deleteAdminUser() {
     const model = this.ctx.model.Admin;
-    await model.findByIdAndRemove(this.ctx.request.params.id);
+    await model.findByIdAndRemove(this.ctx.params.id);
     this.ctx.status = 200;
   }
 
   async getCollectionList() {
     const model = this.ctx.model.Message;
-    const result = await model.find({ tel: this.ctx.request.params.tel }).skip(parseInt(this.ctx.request.query.page * 20)).limit(20);
+    const result = await model.find({ tel: this.ctx.params.tel }).skip(parseInt(this.ctx.query.page * 20)).limit(20);
     this.ctx.status = 200;
     this.ctx.body = result;
   }
 
   async collectionMessage() {
     const model = this.ctx.model.Message;
-    const result = await model.find({ mid: { $in: this.ctx.request.body }, tel: this.ctx.request.params.tel });
+    const result = await model.find({ mid: { $in: this.ctx.request.body }, tel: this.ctx.params.tel });
     for (const i in result) {
       const message = result[i];
       message.isCollection = true;
@@ -238,7 +234,7 @@ class UserController extends Controller {
 
   async unCollectionMessage() {
     const model = this.ctx.model.Message;
-    const result = await model.find({ mid: { $in: this.ctx.request.body }, tel: this.ctx.request.params.tel });
+    const result = await model.find({ mid: { $in: this.ctx.request.body }, tel: this.ctx.params.tel });
     for (const i in result) {
       const message = result[i];
       message.isCollection = false;

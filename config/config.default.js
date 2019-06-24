@@ -47,10 +47,9 @@ module.exports = appInfo => {
 
   config.socketKeys = {
     serviceLoginFormOther: 'service-logged-in-from-other-device', // 客服登录冲突  if dont need delete it.
-    authentication: 'authentication', // 上线
+    authentication: 'user-authentication', // 上线
     authenticationResult: 'authentication-result', // 上线返回结果
     chatMessageReceived: 'chat-message-received', // 接收到别人消息
-    disconnect: 'disconnect', // 断开连接
     chatMessage: 'chat-message', // 发送消息
     chatHistory: 'chat-history', // 查询历史消息
     chatHistoryDelivered: 'chat-history-delivered', // 历史消息返回结果

@@ -3,7 +3,7 @@
 const Controller = require('egg').Controller;
 
 class UserController extends Controller {
-  async auth() {
+  async authentication() {
     const { app } = this;
     // const nsp = app.io.of('/');
     const contains = this.config.socketKeys;
@@ -11,7 +11,6 @@ class UserController extends Controller {
     const socket = this.ctx.socket;
     const result = await this.service.user.createUser(data);
     if (result.success === 0) { // error
-      console.log(result.error);
       socket.emit(contains.authenticationResult, {
         isAuthed: false,
         changeDevice: false,
