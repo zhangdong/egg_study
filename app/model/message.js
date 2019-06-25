@@ -18,7 +18,7 @@ module.exports = app => {
       enum: [ 'text', 'picture', 'url' ],
       default: 'text',
     },
-    timestamp: {// 时间
+    timestamp: { // 时间
       type: 'Number',
       required: true,
     },
