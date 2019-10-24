@@ -12,7 +12,10 @@ module.exports = app => {
       type: 'Date',
       default: new Date(),
     },
+  }, {
+    versionKey: false,
+    usePushEach: true,
   });
-  return mongoose.model('RecordNews', schema, 'record_news');
+  return mongoose.model('RecordNews', schema);
 
 };

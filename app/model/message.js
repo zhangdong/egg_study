@@ -37,6 +37,9 @@ module.exports = app => {
     content: {// 内容
 
     },
+  }, {
+    versionKey: false,
+    usePushEach: true,
   });
-  return mongoose.model('Message', schema, 'message');
+  return mongoose.model('Message', schema);
 };

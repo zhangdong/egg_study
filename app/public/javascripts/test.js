@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-	$(".handphones").val("18601294107,18610353005");
+	$(".handphones").val("18601294107,18610353005,13717516681");
 	$(".producename").val("烧碱");
 	$(".produceclass").val("河北集团");
 	$(".smsbody").val("烧碱,河北集团出品,4444元/吨");

@@ -9,6 +9,7 @@ module.exports = app => {
 
   io.of('/').route(contains.authentication, io.controller.user.authentication);
   io.of('/').route(contains.chatMessageDidReceived, io.controller.user.messageDidReceived);
+  io.of('/').route(contains.uploadUMToken, io.controller.user.uploadUMToken);
 
   router.get('/test', controller.web.test);
 

@@ -19,6 +19,7 @@ module.exports = app => {
         default: false,
       },
     },
+    appversion: 'Number',
     newsHistory: [],
     channelTimestamp: {
       type: 'Date',
@@ -49,7 +50,7 @@ module.exports = app => {
         type: 'String',
         required: true,
       }],
-      jpushId: 'String',
+      umeng: 'String',
       logDate: [
         {
           timestamp: { type: 'Date' },
@@ -60,8 +61,15 @@ module.exports = app => {
         },
       ],
     },
+  }, {
+    versionKey: false,
+    usePushEach: true,
   });
-
+  userSchema.methods.updateUMToken = async function(token) {
+		this.device.umeng = token;
+		await this.save();
+  }
+  
   userSchema.methods.updateDevice = async function(device, addNew, jpushId) {
     let addNewUUID = false;
     if (typeof jpushId !== 'undefined') {
@@ -82,11 +90,12 @@ module.exports = app => {
     }
     this.device.os = device.os;
     if (typeof device.token === 'undefined') { device.token = null; }
+    if (typeof device.umeng === 'undefined') { device.umeng = null; }
     this.device.token = device.token;
+    this.device.umeng = device.umeng;
     await this.save();
-    return addNewUUID;
+    return false;
   };
 
-  return mongoose.model('User', userSchema, 'user');
-
+  return mongoose.model('User', userSchema);
 };

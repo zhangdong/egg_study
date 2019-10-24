@@ -20,7 +20,10 @@ module.exports = app => {
       type: 'String',
       required: true,
     },
+  }, {
+    versionKey: false,
+    usePushEach: true,
   });
-  return mongoose.model('Admin', schema, 'admin');
+  return mongoose.model('AdminUser', schema);
 
 };

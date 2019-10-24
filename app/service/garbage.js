@@ -7,7 +7,7 @@ class GarbageService extends Service {
   async cleanUserMessage() {
     const model = this.ctx.model.Message;
     const overdueDate = parseInt(new Date().getTime() / 1000) - 86400 * 7;
-    await model.remove({ timestamp: { $lt: overdueDate } });
+    await model.remove({ timestamp: { $lt: overdueDate }, isReceived: true });
   }
 
   async cleanRecordMessage() {

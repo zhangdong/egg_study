@@ -3,6 +3,14 @@
 const Controller = require('egg').Controller;
 
 class UserController extends Controller {
+  async uploadUMToken(){
+    const data = this.ctx.args[0] || {};
+    const result = await this.service.user.createUser(data);
+    if(result.success != 0) {
+      const user = result.user;
+      await user.updateUMToken(data.umeng);
+    }
+  }
   async authentication() {
     const { app } = this;
     // const nsp = app.io.of('/');
@@ -53,12 +61,13 @@ class UserController extends Controller {
           // 通知不实现了
         }
       }
-      const newuser = user.toJSON();
-      delete newuser.newsHistory;
+      // const newuser = user.toJSON();
+      // delete newuser.newsHistory;
+      // delete newuser.logDa;
       socket.emit(contains.authenticationResult, {
         isAuthed: true,
         changeDevice: false,
-        user: newuser,
+        // user: newuser,
       });
 
       // 向缓存绑定socketid 和 tel
