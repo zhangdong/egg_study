@@ -7,32 +7,32 @@
     "declarations": true
   },
   "dependencies": {
-    "egg": "^2.22.2",
+    "egg": "^2.24.0",
     "egg-mongoose": "^3.2.0",
-    "egg-scripts": "^2.11.0",
+    "egg-scripts": "^2.11.1",
     "egg-socket.io": "^4.1.6",
     "egg-view-pug": "^1.0.0",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
-    "axios":"^0.19.0",
-    "nanoid": "^2.0.3",
-    "async":"~3.1.0"
+    "axios": "^0.19.0",
+    "nanoid": "^2.1.5",
+    "async": "~3.1.0"
   },
   "devDependencies": {
     "autod": "^3.1.0",
     "autod-egg": "^1.1.0",
     "egg-bin": "^4.13.0",
-    "egg-ci": "^1.12.0",
+    "egg-ci": "^1.13.0",
     "egg-mock": "^3.23.0",
-    "eslint": "^6.0.0",
+    "eslint": "^6.5.0",
     "eslint-config-egg": "^7.4.0"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-egg --sticky",
-    "stop": "egg-scripts stop --title=egg-server-egg",
+    "start": "egg-scripts start --daemon --title=egg-sdmanager --sticky",
+    "stop": "egg-scripts stop --title=egg-sdmanager",
     "dev": "egg-bin dev --sticky",
     "debug": "egg-bin debug --sticky",
     "test": "npm run lint -- --fix && npm run test-local",

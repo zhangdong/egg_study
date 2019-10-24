@@ -25,7 +25,7 @@ module.exports = appInfo => {
   };
   config.mongoose = {
     client: {
-      url: 'mongodb://127.0.0.1/ZYMessage',//'mongodb://adminp:pview365@localhost/ZYMessage'
+      url: 'mongodb://127.0.0.1/ZYMessage', // 'mongodb://adminp:pview365@localhost/ZYMessage'
       options: { useFindAndModify: false },
       // mongoose global plugins, expected a function or an array of function and options
       // plugins: [createdPlugin, [updatedPlugin, pluginOptions]],
@@ -51,17 +51,17 @@ module.exports = appInfo => {
       },
     },
   };
-  config.ignoreUrls = [ '/post-message', '/logout', '/', 'add-channel', '/test', '/userlist', '/smslist', '/channel', '/usermanager' ];
+  config.ignoreUrls = [ '/post-message', '/version', '/logout', '/', 'add-channel', '/test', '/userlist', '/smslist', '/channel', '/usermanager' ];
 
   config.upush = {
-    andriodAppKey:"5dafbddc3fc1956ebc000025",
-	  andriodappSecret:"ghacmmyro6iwuc2mwrqv3guehp8sgfnc",
-	  iosAppKey:"5dafbd5f4ca3572b4c000a3b",
-	  iosappSecret:"ycub8aul3lu4rytqe0hxnx9qbgc0yg0g",
-  }
+    andriodAppKey: '5dafbddc3fc1956ebc000025',
+	  andriodappSecret: 'ghacmmyro6iwuc2mwrqv3guehp8sgfnc',
+	  iosAppKey: '5dafbd5f4ca3572b4c000a3b',
+	  iosappSecret: 'ycub8aul3lu4rytqe0hxnx9qbgc0yg0g',
+  };
 
   config.socketKeys = {
-    uploadUMToken:"uploadumtoken",//更新token
+    uploadUMToken: 'uploadumtoken', // 更新token
     serviceLoginFormOther: 'service-logged-in-from-other-device', // 客服登录冲突  if dont need delete it.
     authentication: 'user-authentication', // 上线
     authenticationResult: 'authentication-result', // 上线返回结果

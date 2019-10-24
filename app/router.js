@@ -71,5 +71,6 @@ module.exports = app => {
 
   router.post('/post-message', controller.message.sendMessage);
   router.get('/record', controller.message.getRecords);
+  router.get('/version', controller.update.version);
 
 };

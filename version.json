@@ -1,0 +1,10 @@
+{
+    "andriod": {
+        "version":"1.0.0",
+        "forceupdate":false
+    },
+    "ios": {
+        "version":"1.0.10",
+        "forceupdate":false
+    }
+}
