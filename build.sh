@@ -1,3 +1,4 @@
 rm -rf node_modules/
 npm install --production
-tar -zcvf ./release.tgz .
+zip -r ./release.zip ./
+npm install

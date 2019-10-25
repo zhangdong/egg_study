@@ -25,7 +25,7 @@ module.exports = appInfo => {
   };
   config.mongoose = {
     client: {
-      url: 'mongodb://127.0.0.1/ZYMessage', // 'mongodb://adminp:pview365@localhost/ZYMessage'
+      url: 'mongodb://127.0.0.1/ZYMessage_test', // 'mongodb://adminp:pview365@localhost/ZYMessage'
       options: { useFindAndModify: false },
       // mongoose global plugins, expected a function or an array of function and options
       // plugins: [createdPlugin, [updatedPlugin, pluginOptions]],

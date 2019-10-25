@@ -1,1 +1,5 @@
 db.createUser({user: "adminp",pwd: "pview365",roles:["readWrite", "dbAdmin"]})
+
+//
+pm2 start server.js -n PushServer2
+pm2 save
