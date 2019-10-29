@@ -2,7 +2,7 @@
 
 const Service = require('egg').Service;
 const UMeng = require('../lib/upush');
-const async = require("async")
+const async = require('async');
 
 class MessageService extends Service {
   async getPendingNews(tel) {
@@ -48,30 +48,30 @@ class MessageService extends Service {
     }
   }
 
-  sendios(list,body){
+  sendios(list, body) {
     const contains = this.config.upush;
-    var umeng = new UMeng({
+    const umeng = new UMeng({
       appKey: contains.iosAppKey,
-      appMasterSecret: contains.iosappSecret
+      appMasterSecret: contains.iosappSecret,
     });
     umeng.pushList({
-      title:"系统通知",
-      content:body,
-      list:list,
-      finish(r){console.log(r)},
+      title: '系统通知',
+      content: body,
+      list,
+      finish(r) { console.log(r); },
     });
   }
 
-  sendandriod(list,body) {
+  sendandriod(list, body) {
     const contains = this.config.upush;
-    var umeng = new UMeng({
+    const umeng = new UMeng({
       appKey: contains.andriodAppKey,
-      appMasterSecret: contains.andriodappSecret
+      appMasterSecret: contains.andriodappSecret,
     });
     umeng.pushList({
-      title:"系统通知",
-      content:body,
-      list:list,
+      title: '系统通知',
+      content: body,
+      list,
     });
   }
 
@@ -85,13 +85,13 @@ class MessageService extends Service {
     const umTokens_ios = [];
     const self = this;
 
-    const q = async.queue(async function(msg){
+    const q = async.queue(async function(msg) {
       const tel = msg.tel;
 
       await model.create(msg);
       let user;
-      const result = await self.service.user.createUser({tel:tel});
-      if(result.success != 0) {
+      const result = await self.service.user.createUser({ tel });
+      if (result.success !== 0) {
         user = result.user;
       }
 
@@ -100,27 +100,26 @@ class MessageService extends Service {
         const socket = self.app.io.to(toSocket);
         if (socket) {
           socket.emit(contains.chatMessageReceived, msg);
-        }  
-      } 
+        }
+      }
 
-      if(user){ 
-        if(user.device.umeng.length > 0){
-          if(user.device.os.toLowerCase() == "ios") {
+      if (user) {
+        if (user.device.umeng.length > 0) {
+          if (user.device.os.toLowerCase() === 'ios') {
             umTokens_ios.push(user.device.umeng);
-          }
-          else if(user.device.os.toLowerCase() == "android") {
+          } else if (user.device.os.toLowerCase() === 'android') {
             umTokens_andriod.push(user.device.umeng);
           }
         }
       }
       return true;
-    },11);
+    }, 11);
     q.drain(function() {
-      if(umTokens_andriod.length > 0) {
-        self.sendandriod(umTokens_andriod,message.smsbody);
+      if (umTokens_andriod.length > 0) {
+        self.sendandriod(umTokens_andriod, message.smsbody);
       }
-      if(umTokens_ios.length > 0){
-        self.sendios(umTokens_ios,message.smsbody);
+      if (umTokens_ios.length > 0) {
+        self.sendios(umTokens_ios, message.smsbody);
       }
     });
     for (const i in tels) {
@@ -132,7 +131,7 @@ class MessageService extends Service {
       msg.tel = tel;
       q.push(msg);
     }
-   
+
   }
 }
 
